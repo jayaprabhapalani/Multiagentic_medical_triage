@@ -388,7 +388,7 @@ sequenceDiagram
   JobStore-->>FastAPI: ResearchJob (complete)
   FastAPI-->>Client: { job_id, status: complete, final_report, results, ... }
 ```
-
+![alt text](image.png)
 ---
 
 ## 12. Asyncio Concepts Used — Quick Reference
