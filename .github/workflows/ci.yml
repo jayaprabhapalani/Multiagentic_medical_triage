@@ -34,10 +34,19 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Validate Docker secrets
+        run: |
+          if [ -z "$DOCKER_USERNAME" ]; then
+            echo "ERROR: DOCKERHUB_USERNAME secret is not set"
+            exit 1
+          fi
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -49,4 +58,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/medical-triage:latest
+          tags: prabha10/medical-triage:latest
