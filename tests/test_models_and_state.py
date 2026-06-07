@@ -1,5 +1,5 @@
 import pytest
-from models import JobStatus, SubQuestion, ResearchResult, ResearchJob, CreateJobRequest, JobStatusResponse
+from models import JobStatus, SubQuestion, ResearchResult, ResearchJob, CreateJobRequest
 from state import JobStore
 
 
